@@ -87,7 +87,7 @@ hint: the strings returned need to exactly match the string in step 4.
 function getWinnersByYear(arr,fun1,fun2,fun3) {
     let whoWon = fun3(arr,fun1);
     let names = fun2(arr,fun1);
-    return whoWon.map((item,index) => `In ${names[index]}, ${whoWon[index]} won the world cup!`);
+    return whoWon.map((item,index) => `In ${names[index]}, ${item} won the world cup!`);
 }
 
 
@@ -101,8 +101,10 @@ Use the higher order function getAverageGoals to do the following:
  Example of invocation: getAverageGoals(getFinals(fifaData));
 */
 
-function getAverageGoals(fun1) {
-   /* code here */
+function getAverageGoals(fun) {
+   
+   let averageGoals = fun.reduce((accumulator,currentValue)=>{return accumulator+=currentValue["Home Team Goals"]+currentValue["Away Team Goals"]},0);
+   return `${Math.round(averageGoals/fun.length*100)/100}`;
 }
 
 
